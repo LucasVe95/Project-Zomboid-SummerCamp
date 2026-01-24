@@ -1,20 +1,14 @@
 package.path = package.path .. ";../?.lua;../?/init.lua"
 
 local PS = require "core/player_selection"
+local Teams = require "core/teams"
 
--- Choix libre
-PS.chooseCharacter("Joueur1", "Alice")
+-- Joueur choisit un perso
+local perso = PS.chooseCharacter("Joueur1", "Alice")
+Teams.assignPlayer("Joueur1", perso)
 
--- Choix aléatoire
-PS.chooseCharacter("Joueur2", "random")
+local perso2 = PS.chooseCharacter("Joueur2", "random")
+Teams.assignPlayer("Joueur2", perso2)
 
--- Assignation à une équipe
-PS.assignToTeam("Joueur1", "Alpha")
+Teams.printTeams()
 
--- Exemple pour afficher les équipes
-for teamName, players in pairs(PS.teams) do
-    print("Équipe " .. teamName .. " : ")
-    for _, p in ipairs(players) do
-        print(" - " .. p)
-    end
-end
