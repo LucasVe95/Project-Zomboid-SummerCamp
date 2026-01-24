@@ -67,7 +67,7 @@ function PlayerSelection.chooseCharacter(playerName, chosenCharacter)
     return finalChoice
 end
 
--- Exemple de distribution dans les équipes
+-- Fonction pour assigner un joueur à une équipes
 function PlayerSelection.assignToTeam(playerName, teamName)
     if PlayerSelection.teams[teamName] then
         table.insert(PlayerSelection.teams[teamName], playerName)
