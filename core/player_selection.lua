@@ -44,7 +44,13 @@ function PlayerSelection.chooseCharacter(playerName, chosenCharacter)
         if not finalChoice then return nil end
     else
         if #available == 0 then return nil end
-        local index = ZombRand(#available) + 1
+        -- Use ZombRand if available (in-game), otherwise fall back to math.random (testing)
+        local index
+        if ZombRand then
+            index = ZombRand(#available) + 1
+        else
+            index = math.random(1, #available)
+        end
         finalChoice = available[index]
     end
 
