@@ -1,15 +1,28 @@
-# Summer Camp Survival – Project Zomboid Mod
+<div align="center">
 
-## Description
-Summer Camp Survival est un mod multijoueur pour Project Zomboid dans lequel 15 joueurs, répartis en 3 équipes thématiques, doivent survivre sur une île isolée et choisir entre coopération ou trahison pour réussir à s’échapper. Chaque joueur dispose d’objectifs secrets qui influencent le déroulement du jeu, créant un gameplay intense, psychologique et orienté spectacle — parfait pour les streamers.
+# 🌲 Summer Camp Survival
+### *Un Mod Multijoueur Psychologique pour Project Zomboid*
 
-## Fonctionnalités principales
-- 🎮 15 personnages prédéfinis, répartis en 3 équipes
-- 🎴 Choix de personnage libre ou aléatoire au début de la partie
-- 💀 Mort définitive du personnage
-- 📜 Objectifs secrets pour chaque joueur, influençant trahison ou coopération
-- 🏝️ Île unique avec plusieurs routes d’évasion (15+)
-- 🌪️ Événements dynamiques et environnement interactif
-- 🎬 Mode pensé pour le streaming et la visibilité spectateur
+**15 Joueurs. 3 Équipes. 1 Île Isolée. Coopérez... ou Trahissez pour survivre.**
 
-## Structure du mod
+[![Project Zomboid](https://img.shields.io/badge/Game-Project_Zomboid-4682B4.svg)]()
+[![Genre](https://img.shields.io/badge/Genre-Multiplayer_Social_Deduction-red.svg)]()
+[![Mode](https://img.shields.io/badge/Focus-Streamer_Friendly-purple.svg)]()
+
+[🎮 S'abonner sur le Steam Workshop](#) • [💬 Serveur Discord](#) • [📜 Regarder le Trailer](#)
+
+---
+
+</div>
+
+## 🩸 À propos du Mod
+
+**Summer Camp Survival** transforme l'expérience *Project Zomboid* en une aventure sociale sous haute tension. 
+
+Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs** répartis en **3 équipes thématiques** s'affrontent et collaborent. Mais attention : chaque joueur possède des **objectifs secrets** qui peuvent inverser le cours des alliances à tout moment. Choisissez entre l'entraide héroïque ou la trahison sanglante pour faire partie des rares rescapés.
+
+> 🎬 **Conçu pour le streaming :** Un gameplay dynamique, un suspense permanent et une vision spectateur pensée pour créer des moments épiques en live !
+
+---
+
+## ✨ Fonctionnalités Principales
