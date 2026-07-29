@@ -26,3 +26,76 @@ Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs*
 ---
 
 ## ✨ Fonctionnalités Principales
+┌────────────────────────────────────────────────────────────────────────┐
+│ 🔥 15 Personnages Unique & 3 Équipes Thématiques                       │
+│ 🎴 Système de Sélection Libre ou Aléatoire au spawn                    │
+│ 💀 Permadeath : La mort est définitive, chaque décision compte          │
+│ 📜 Objectifs Secrets par Joueur (Coopération, Sabotage, Assassinat...) │
+│ 🏝️ Map Sur-Mesure : Une île dédiée avec +15 routes d'évasion uniques   │
+│ 🌪️ Événements Dynamiques & Environnement Évolutif                      │
+│ 🎬 Interface & Mode Spectateur Optimisés pour Twitch/YouTube           │
+└────────────────────────────────────────────────────────────────────────┘
+
+
+---
+
+## 🏝️ Le Concept de Jeu
+
+[ ⛺ Équipe Alpha ]      [ 🌲 Équipe Beta ]      [ 📻 Équipe Gamma ]
+│                       │                       │
+└───────────────┬───────┴───────────────┬───────┘
+│                       │
+▼                       ▼
+🤝 Alliance de Circonstance   OR   🗡️ Trahison Secrète
+│                       │
+└───────────┬───────────┘
+│
+▼
+🛸 15+ Voies d'Évasion Possibles
+
+
+---
+
+## 📂 Structure du Mod (Architecture)
+
+```text
+SummerCampSurvival/
+├── 📁 media/
+│   ├── 📁 maps/
+│   │   └── 📁 SummerCampIsland/        # Carte personnalisée de l'île
+│   ├── 📁 lua/
+│   │   ├── 📁 Client/                  # UIs, objectifs secrets et évènements client
+│   │   ├── 📁 Server/                  # Gestion des équipes, victoires et permadeath
+│   │   └── 📁 Shared/                  # Configuration des personnages et items du mod
+│   └── 📁 textures/                    # Assets graphiques, icônes & UI
+├── 📄 mod.info                         # Informations du mod Steam Workshop
+└── 📄 poster.png                       # Visuel d'illustration du mod
+🚀 Installation & Lancement
+Pour les Joueurs :
+Abonnez-vous au mod sur le Steam Workshop.
+
+Rejoignez un serveur dédié hébergeant le mod Summer Camp Survival.
+
+Choisissez (ou tirez au sort) votre personnage dans le lobby et découvrez vos objectifs secrets !
+
+Pour les Administrateurs de Serveur :
+Ajoutez le mod à votre fichier server.ini :
+
+Ini, TOML
+Mods=SummerCampSurvival
+Map=SummerCampIsland;Muldraugh, KY
+Configurez le nombre de joueurs (recommandé : 15 joueurs).
+
+🛠️ Stack & Outils de Modding
+Moteur de jeu : Project Zomboid (Java / Lua Core)
+
+Scripts : Lua (Client & Server side)
+
+Mapping : WorldEd / TileMover (Zomboid Mapping Tools)
+
+👨‍💻 Crédits & Auteurs
+Créateur du Mod : Lucas Veysset
+
+Remerciements : À la communauté des moddeurs de Project Zomboid
+
+Survivor, surveille tes arrières... Même tes coéquipiers ont un secret. 🩸
