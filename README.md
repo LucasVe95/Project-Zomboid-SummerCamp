@@ -27,7 +27,7 @@ Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs*
 
 ## ✨ Fonctionnalités Principales
 
-```text
+```
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 🔥 15 Personnages Uniques & 3 Équipes Thématiques                      │
 │ 🎴 Système de Sélection Libre ou Aléatoire au spawn                    │
@@ -37,8 +37,13 @@ Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs*
 │ 🌪️ Événements Dynamiques & Environnement Évolutif                      │
 │ 🎬 Interface & Mode Spectateur Optimisés pour Twitch/YouTube           │
 └────────────────────────────────────────────────────────────────────────┘
-🏝️ Le Concept de Jeu
-Plaintext
+```
+
+---
+
+## 🏝️ Le Concept de Jeu
+
+```
   [ ⛺ Équipe Alpha ]      [ 🌲 Équipe Beta ]      [ 📻 Équipe Gamma ]
           │                       │                       │
           └───────────────┬───────┴───────────────┬───────┘
@@ -50,45 +55,62 @@ Plaintext
                                       │
                                       ▼
                       🛸 15+ Voies d'Évasion Possibles
-📂 Structure du Mod (Architecture)
-Plaintext
+```
+
+---
+
+## 📂 Structure du Mod (Architecture)
+
+```
 SummerCampSurvival/
-├── 📁 media/
-│   ├── 📁 maps/
-│   │   └── 📁 SummerCampIsland/        # Carte personnalisée de l'île
-│   ├── 📁 lua/
-│   │   ├── 📁 Client/                  # UIs, objectifs secrets et évènements client
-│   │   ├── 📁 Server/                  # Gestion des équipes, victoires et permadeath
-│   │   └── 📁 Shared/                  # Configuration des personnages et items du mod
-│   └── 📁 textures/                    # Assets graphiques, icônes & UI
-├── 📄 mod.info                         # Informations du mod Steam Workshop
-└── 📄 poster.png                       # Visuel d'illustration du mod
-🚀 Installation & Lancement
-Pour les Joueurs :
-Abonnez-vous au mod sur le Steam Workshop.
+├── media/
+│   ├── maps/
+│   │   └── SummerCampIsland/        # Carte personnalisée de l'île
+│   ├── lua/
+│   │   ├── Client/                  # UIs, objectifs secrets et évènements client
+│   │   ├── Server/                  # Gestion des équipes, victoires et permadeath
+│   │   └── Shared/                  # Configuration des personnages et items du mod
+│   └── textures/                    # Assets graphiques, icônes & UI
+├── mod.info                         # Informations du mod Steam Workshop
+└── poster.png                       # Visuel d'illustration du mod
+```
 
-Rejoignez un serveur dédié hébergeant le mod Summer Camp Survival.
+---
 
-Choisissez (ou tirez au sort) votre personnage dans le lobby et découvrez vos objectifs secrets !
+## 🚀 Installation & Lancement
 
-Pour les Administrateurs de Serveur :
-Ajoutez le mod à votre fichier server.ini :
+### Pour les Joueurs :
+1. Abonnez-vous au mod sur le **Steam Workshop**.
+2. Rejoignez un serveur dédié hébergeant le mod **Summer Camp Survival**.
+3. Choisissez (ou tirez au sort) votre personnage dans le lobby et découvrez vos **objectifs secrets** !
 
-Ini, TOML
+### Pour les Administrateurs de Serveur :
+1. Ajoutez le mod à votre fichier `server.ini` :
+```ini
 Mods=SummerCampSurvival
 Map=SummerCampIsland;Muldraugh, KY
-Configurez le nombre de joueurs (recommandé : 15 joueurs).
+```
+2. Configurez le nombre de joueurs (recommandé : **15 joueurs**).
 
-🛠️ Stack & Outils de Modding
-Moteur de jeu : Project Zomboid (Java / Lua Core)
+---
 
-Scripts : Lua (Client & Server side)
+## 🛠️ Stack & Outils de Modding
 
-Mapping : WorldEd / TileMover (Zomboid Mapping Tools)
+- **Moteur de jeu :** Project Zomboid (Java / Lua Core)
+- **Scripts :** Lua (Client & Server side)
+- **Mapping :** WorldEd / TileMover (Zomboid Mapping Tools)
 
-👨‍💻 Crédits & Auteurs
-Créateur du Mod : Lucas Veysset
+---
 
-Remerciements : À la communauté des moddeurs de Project Zomboid
+## 👨‍💻 Crédits & Auteurs
 
-Survivor, surveille tes arrières... Même tes coéquipiers ont un secret. 🩸
+* **Créateur du Mod :** Lucas Veysset
+* **Remerciements :** À la communauté des moddeurs de *Project Zomboid*
+
+---
+
+<div align="center">
+
+*Survivor, surveille tes arrières... Même tes coéquipiers ont un secret.* 🩸
+
+</div>
