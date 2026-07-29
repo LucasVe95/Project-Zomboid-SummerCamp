@@ -26,8 +26,10 @@ Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs*
 ---
 
 ## ✨ Fonctionnalités Principales
+
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│ 🔥 15 Personnages Unique & 3 Équipes Thématiques                       │
+│ 🔥 15 Personnages Uniques & 3 Équipes Thématiques                      │
 │ 🎴 Système de Sélection Libre ou Aléatoire au spawn                    │
 │ 💀 Permadeath : La mort est définitive, chaque décision compte          │
 │ 📜 Objectifs Secrets par Joueur (Coopération, Sabotage, Assassinat...) │
@@ -35,30 +37,21 @@ Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs*
 │ 🌪️ Événements Dynamiques & Environnement Évolutif                      │
 │ 🎬 Interface & Mode Spectateur Optimisés pour Twitch/YouTube           │
 └────────────────────────────────────────────────────────────────────────┘
-
-
----
-
-## 🏝️ Le Concept de Jeu
-
-[ ⛺ Équipe Alpha ]      [ 🌲 Équipe Beta ]      [ 📻 Équipe Gamma ]
-│                       │                       │
-└───────────────┬───────┴───────────────┬───────┘
-│                       │
-▼                       ▼
-🤝 Alliance de Circonstance   OR   🗡️ Trahison Secrète
-│                       │
-└───────────┬───────────┘
-│
-▼
-🛸 15+ Voies d'Évasion Possibles
-
-
----
-
-## 📂 Structure du Mod (Architecture)
-
-```text
+🏝️ Le Concept de Jeu
+Plaintext
+  [ ⛺ Équipe Alpha ]      [ 🌲 Équipe Beta ]      [ 📻 Équipe Gamma ]
+          │                       │                       │
+          └───────────────┬───────┴───────────────┬───────┘
+                          │                       │
+                          ▼                       ▼
+            🤝 Alliance de Circonstance   OR   🗡️ Trahison Secrète
+                          │                       │
+                          └───────────┬───────────┘
+                                      │
+                                      ▼
+                      🛸 15+ Voies d'Évasion Possibles
+📂 Structure du Mod (Architecture)
+Plaintext
 SummerCampSurvival/
 ├── 📁 media/
 │   ├── 📁 maps/
