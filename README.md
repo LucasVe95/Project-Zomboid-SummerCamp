@@ -1,7 +1,10 @@
+# Summer Camp Survival
+
 <div align="center">
 
-# 🌲 Summer Camp Survival
-### *Un Mod Multijoueur Psychologique pour Project Zomboid*
+## 🌲 Summer Camp Survival
+
+### _Un Mod Multijoueur Psychologique pour Project Zomboid_
 
 **15 Joueurs. 3 Équipes. 1 Île Isolée. Coopérez... ou Trahissez pour survivre.**
 
@@ -17,7 +20,7 @@
 
 ## 🩸 À propos du Mod
 
-**Summer Camp Survival** transforme l'expérience *Project Zomboid* en une aventure sociale sous haute tension. 
+**Summer Camp Survival** transforme l'expérience _Project Zomboid_ en une aventure sociale sous haute tension.
 
 Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs** répartis en **3 équipes thématiques** s'affrontent et collaborent. Mais attention : chaque joueur possède des **objectifs secrets** qui peuvent inverser le cours des alliances à tout moment. Choisissez entre l'entraide héroïque ou la trahison sanglante pour faire partie des rares rescapés.
 
@@ -80,16 +83,20 @@ SummerCampSurvival/
 ## 🚀 Installation & Lancement
 
 ### Pour les Joueurs :
+
 1. Abonnez-vous au mod sur le **Steam Workshop**.
 2. Rejoignez un serveur dédié hébergeant le mod **Summer Camp Survival**.
 3. Choisissez (ou tirez au sort) votre personnage dans le lobby et découvrez vos **objectifs secrets** !
 
 ### Pour les Administrateurs de Serveur :
+
 1. Ajoutez le mod à votre fichier `server.ini` :
+
 ```ini
 Mods=SummerCampSurvival
 Map=SummerCampIsland;Muldraugh, KY
 ```
+
 2. Configurez le nombre de joueurs (recommandé : **15 joueurs**).
 
 ---
@@ -104,13 +111,13 @@ Map=SummerCampIsland;Muldraugh, KY
 
 ## 👨‍💻 Crédits & Auteurs
 
-* **Créateur du Mod :** Lucas Veysset
-* **Remerciements :** À la communauté des moddeurs de *Project Zomboid*
+- **Créateur du Mod :** Lucas Veysset
+- **Remerciements :** À la communauté des moddeurs de _Project Zomboid_
 
 ---
 
 <div align="center">
 
-*Survivor, surveille tes arrières... Même tes coéquipiers ont un secret.* 🩸
+_Survivor, surveille tes arrières... Même tes coéquipiers ont un secret._ 🩸
 
 </div>
