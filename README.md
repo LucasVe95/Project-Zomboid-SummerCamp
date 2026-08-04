@@ -64,23 +64,65 @@ Dans cette expérience scénarisée sur une île coupée du monde, **15 joueurs*
 
 ## 📂 Structure du Mod (Architecture)
 
+> Projet structuré selon la convention **Project Zomboid** : `media/lua/{client,server,shared}` (minuscules, auto-chargés par le moteur).
+
 ```
 SummerCampSurvival/
+├── mod.info                      # Métadonnées Steam Workshop
+├── README.md                     # Présentation du mod
 ├── media/
-│   ├── maps/
-│   │   └── SummerCampIsland/        # Carte personnalisée de l'île
-│   ├── lua/
-│   │   ├── Client/                  # UIs, objectifs secrets et évènements client
-│   │   ├── Server/                  # Gestion des équipes, victoires et permadeath
-│   │   └── Shared/                  # Configuration des personnages et items du mod
-│   └── textures/                    # Assets graphiques, icônes & UI
-├── mod.info                         # Informations du mod Steam Workshop
-└── poster.png                       # Visuel d'illustration du mod
+│   └── lua/
+│       ├── shared/               # Données & logique commune (client + serveur)
+│       │   ├── player_selection.lua
+│       │   ├── teams.lua
+│       │   ├── player_assignment.lua   # Flow commun (déduplication)
+│       │   └── utils.lua
+│       ├── server/               # Logique serveur (connexion, équipes, quêtes, events)
+│       │   ├── server.lua            # Point d'entrée serveur
+│       │   ├── player_connect.lua
+│       │   ├── player_multijoueur.lua
+│       │   ├── quest_manager.lua     # (stub — Phase 2)
+│       │   ├── escape_routes.lua     # (stub — Phase 2/3)
+│       │   ├── weather.lua           # (stub — Phase 3)
+│       │   ├── zombie_horde.lua      # (stub — Phase 3)
+│       │   ├── drama_events.lua      # (stub — Phase 3)
+│       │   ├── spawn_points.lua      # (stub — Phase 3)
+│       │   └── interactive_objects.lua # (stub — Phase 3)
+│       └── client/               # Interfaces & affichage
+│           ├── client.lua              # Point d'entrée client
+│           ├── ui_selection.lua        # Lobby de sélection (ISUI)
+│           ├── notifications.lua     # (stub — Phase 4)
+│           ├── objectives_ui.lua       # (stub — Phase 4)
+│           └── selection_ui.lua        # (stub — Phase 4)
+├── docs/                         # Documentation
+│   ├── roadmap.md                # Feuille de route par phases
+│   └── game_design.md            # Cahier des charges fonctionnel
+├── test/                         # Tests unitaires (Lua 5.4)
+└── LICENSE
 ```
+→ `media/maps/SummerCampIsland/` et `media/textures/` à intégrer (Phases 3 & 4).
+
+
+---
+
+## 🚦 Statut du Développement
+
+| Fonctionnalité | Phase | Statut |
+|---|---|---|
+| 15 persos & 3 équipes + sélection lobby | 0 — MVP | ✅ Implémentée & testée |
+| Permadeath & conditions de victoire | 1 | ⏳ Planifiée (`docs/roadmap.md`) |
+| Objectifs secrets par joueur | 2 | ⏳ Planifiée |
+| Map île + 15 routes d'évasion | 3 | ⏳ Planifiée (stubs présents) |
+| Événements dynamiques & environnement | 3 | ⏳ Planifiée (stubs présents) |
+| UI & mode spectateur Twitch/YT | 4 | ⏳ Planifiée (stubs présents) |
+
+> Les phases 1–4 sont décrites dans [`docs/roadmap.md`](docs/roadmap.md).  
+> Tests unitaires (Lua 5.4) : `lua test/test_*.lua` — tous au code de sortie 0.
 
 ---
 
 ## 🚀 Installation & Lancement
+
 
 ### Pour les Joueurs :
 

@@ -1,4 +1,6 @@
-local MP = require "core/player_multijoueur"
+package.path = package.path .. ";../?.lua;../?/init.lua"
+
+local MP = require "media/lua/server/player_multijoueur"
 
 -- Simulation de connexion des joueurs
 MP.onPlayerJoin("Joueur1", "Alice")

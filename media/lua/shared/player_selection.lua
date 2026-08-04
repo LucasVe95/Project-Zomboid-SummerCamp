@@ -1,13 +1,15 @@
-PlayerSelection = {}
+-- media/lua/shared/player_selection.lua
+-- Sélection de personnage : 15 persos répartis en 3 équipes.
+-- Mode libre (nom) ou aléatoire. Suit les persos déjà pris.
+local PlayerSelection = {}
 
--- Les 15 persos
 PlayerSelection.teams = {
-    Alpha = {"Alice", "Bob", "Charlie", "Diana", "Ethan"},
-    Bravo = {"Fiona", "George", "Hannah", "Ian", "Julia"},
-    Charlie = {"Kevin", "Laura", "Mike", "Nina", "Oscar"}
+    Alpha = { "Alice", "Bob", "Charlie", "Diana", "Ethan" },
+    Bravo = { "Fiona", "George", "Hannah", "Ian", "Julia" },
+    Gamma = { "Kevin", "Laura", "Mike", "Nina", "Oscar" },
 }
 
--- Liste globale pour choisir librement
+-- Liste plate de tous les personnages, pour la sélection libre
 PlayerSelection.allCharacters = {}
 for _, team in pairs(PlayerSelection.teams) do
     for _, char in ipairs(team) do
@@ -15,10 +17,10 @@ for _, team in pairs(PlayerSelection.teams) do
     end
 end
 
--- Persos déjà pris
+-- Personnages déjà pris (éviter les doublons)
 PlayerSelection.takenCharacters = {}
 
--- Retourne les persos disponibles
+-- Retourne les personnages encore disponibles.
 function PlayerSelection.getAvailableCharacters()
     local available = {}
     for _, char in ipairs(PlayerSelection.allCharacters) do
@@ -29,7 +31,9 @@ function PlayerSelection.getAvailableCharacters()
     return available
 end
 
--- Choix libre ou aléatoire
+-- Choix libre (nom) ou aléatoire ("random").
+-- Utilise ZombRand dans le jeu, math.random en fallback (tests).
+-- Marque le perso comme pris et le retourne, ou nil si impossible.
 function PlayerSelection.chooseCharacter(playerName, chosenCharacter)
     local available = PlayerSelection.getAvailableCharacters()
     local finalChoice = nil
@@ -44,7 +48,6 @@ function PlayerSelection.chooseCharacter(playerName, chosenCharacter)
         if not finalChoice then return nil end
     else
         if #available == 0 then return nil end
-        -- Use ZombRand if available (in-game), otherwise fall back to math.random (testing)
         local index
         if ZombRand then
             index = ZombRand(#available) + 1

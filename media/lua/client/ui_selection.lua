@@ -1,14 +1,17 @@
-require "ISUI/ISPanel"
-require "ISUI/ISButton"
-require "ISUI/ISLabel"
+-- media/lua/client/ui_selection.lua
+-- Interface de sélection de personnage (Project Zomboid ISUI).
+local PS = require "media/lua/shared/player_selection"
+local Teams = require "media/lua/shared/teams"
 
-local PS = require "core/player_selection"
-local Teams = require "core/teams"
-UISelection = {}
+local UISelection = {}
 
 UISelection.panel = nil
 UISelection.selectedCharacter = nil
 UISelection.currentPlayer = nil
+
+require "ISUI/ISPanel"
+require "ISUI/ISButton"
+require "ISUI/ISLabel"
 
 function UISelection.show(playerObj)
     UISelection.currentPlayer = playerObj
@@ -48,10 +51,11 @@ function UISelection.onCharacterClick(button)
     UISelection.showConfirmDialog()
 end
 
-function UISelection.onRandomClick(button)
+function UISelection.onRandomClick()
     local available = PS.getAvailableCharacters()
     if #available > 0 then
-        UISelection.selectedCharacter = available[ZombRand(#available) + 1]
+        local index = ZombRand and (ZombRand(#available) + 1) or math.random(1, #available)
+        UISelection.selectedCharacter = available[index]
         UISelection.showConfirmDialog()
     end
 end
@@ -77,8 +81,10 @@ function UISelection.confirmSelection()
         getPlayerData(playerName):setMetadata("chosenCharacter", chosen)
     end
 
-    UISelection.panel:removeFromUIManager()
-    UISelection.panel = nil
+    if UISelection.panel then
+        UISelection.panel:removeFromUIManager()
+        UISelection.panel = nil
+    end
     UISelection.selectedCharacter = nil
 end
 
