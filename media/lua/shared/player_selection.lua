@@ -32,10 +32,13 @@ function PlayerSelection.getAvailableCharacters()
 end
 
 -- Choix libre (nom) ou aléatoire ("random").
--- Utilise ZombRand dans le jeu, math.random en fallback (tests).
+-- Si fallbackRandom est vrai et que le nom choisi est deja pris,
+-- tire un personnage disponible au hasard (evite que un joueur reste sans perso).
 -- Marque le perso comme pris et le retourne, ou nil si impossible.
-function PlayerSelection.chooseCharacter(playerName, chosenCharacter)
+function PlayerSelection.chooseCharacter(playerName, chosenCharacter, fallbackRandom)
     local available = PlayerSelection.getAvailableCharacters()
+    if #available == 0 then return nil end
+
     local finalChoice = nil
 
     if chosenCharacter and chosenCharacter ~= "random" then
@@ -45,15 +48,15 @@ function PlayerSelection.chooseCharacter(playerName, chosenCharacter)
                 break
             end
         end
-        if not finalChoice then return nil end
-    else
-        if #available == 0 then return nil end
-        local index
-        if ZombRand then
-            index = ZombRand(#available) + 1
-        else
-            index = math.random(1, #available)
+        if not finalChoice and fallbackRandom then
+            -- Nom pris -> re-pick aleatoire parmi les disponibles
+            local index = ZombRand and (ZombRand(#available) + 1) or math.random(1, #available)
+            finalChoice = available[index]
+        elseif not finalChoice then
+            return nil
         end
+    else
+        local index = ZombRand and (ZombRand(#available) + 1) or math.random(1, #available)
         finalChoice = available[index]
     end
 

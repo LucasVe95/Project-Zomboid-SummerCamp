@@ -29,7 +29,7 @@ function PlayerAssignment.selectAndAssign(playerName, choice, confirmFn)
         if choice == "random" or choice == nil then
             selectedCharacter = PS.chooseCharacter(playerName, "random")
         else
-            selectedCharacter = PS.chooseCharacter(playerName, choice)
+            selectedCharacter = PS.chooseCharacter(playerName, choice, true) -- fallback aleatoire si le nom est deja pris
         end
 
         if not selectedCharacter then

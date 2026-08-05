@@ -29,6 +29,7 @@ function PlayerConnect.onPlayerJoin(playerName, choice)
     end
 
     print(playerName .. " est prêt à jouer avec le personnage " .. selectedCharacter)
+    return selectedCharacter
 end
 
 -- Affiche le statut actuel des équipes

@@ -110,7 +110,7 @@ SummerCampSurvival/
 | Fonctionnalité | Phase | Statut |
 |---|---|---|
 | 15 persos & 3 équipes + sélection lobby | 0 — MVP | ✅ Implémentée & testée |
-| Permadeath & conditions de victoire | 1 | ⏳ Planifiée (`docs/roadmap.md`) |
+| Permadeath & conditions de victoire | 1 | ✅ Implémentée & testée |
 | Objectifs secrets par joueur | 2 | ⏳ Planifiée |
 | Map île + 15 routes d'évasion | 3 | ⏳ Planifiée (stubs présents) |
 | Événements dynamiques & environnement | 3 | ⏳ Planifiée (stubs présents) |

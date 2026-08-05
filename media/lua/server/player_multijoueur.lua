@@ -19,6 +19,7 @@ function Multiplayer.onPlayerJoin(playerName, choice)
     end
 
     table.insert(Multiplayer.connectedPlayers, { name = playerName, character = selectedCharacter })
+    return selectedCharacter
 end
 
 function Multiplayer.printStatus()
