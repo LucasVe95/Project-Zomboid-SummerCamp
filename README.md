@@ -100,21 +100,21 @@ SummerCampSurvival/
 ├── test/                         # Tests unitaires (Lua 5.4)
 └── LICENSE
 ```
-→ `media/maps/SummerCampIsland/` et `media/textures/` à intégrer (Phases 3 & 4).
 
+→ `media/maps/SummerCampIsland/` et `media/textures/` à intégrer (Phases 3 & 4).
 
 ---
 
 ## 🚦 Statut du Développement
 
-| Fonctionnalité | Phase | Statut |
-|---|---|---|
-| 15 persos & 3 équipes + sélection lobby | 0 — MVP | ✅ Implémentée & testée |
-| Permadeath & conditions de victoire | 1 | ✅ Implémentée & testée |
-| Objectifs secrets par joueur | 2 | ⏳ Planifiée |
-| Map île + 15 routes d'évasion | 3 | ⏳ Planifiée (stubs présents) |
-| Événements dynamiques & environnement | 3 | ⏳ Planifiée (stubs présents) |
-| UI & mode spectateur Twitch/YT | 4 | ⏳ Planifiée (stubs présents) |
+| Fonctionnalité                          | Phase   | Statut                        |
+| --------------------------------------- | ------- | ----------------------------- |
+| 15 persos & 3 équipes + sélection lobby | 0 — MVP | ✅ Implémentée & testée       |
+| Permadeath & conditions de victoire     | 1       | ✅ Implémentée & testée       |
+| Objectifs secrets par joueur            | 2       | ⏳ Planifiée                  |
+| Map île + 15 routes d'évasion           | 3       | ⏳ Planifiée (stubs présents) |
+| Événements dynamiques & environnement   | 3       | ⏳ Planifiée (stubs présents) |
+| UI & mode spectateur Twitch/YT          | 4       | ⏳ Planifiée (stubs présents) |
 
 > Les phases 1–4 sont décrites dans [`docs/roadmap.md`](docs/roadmap.md).  
 > Tests unitaires (Lua 5.4) : `lua test/test_*.lua` — tous au code de sortie 0.
@@ -122,7 +122,6 @@ SummerCampSurvival/
 ---
 
 ## 🚀 Installation & Lancement
-
 
 ### Pour les Joueurs :
 

@@ -16,15 +16,15 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 
 ## 📋 Fonctionnalités du README (Backlog Produit)
 
-| # | Fonctionnalité | Description | Phase |
-|---|---|---|---|
-| F1 | 15 persos & 3 équipes | 15 personnages uniques, 3 équipes (Alpha / Beta / Gamma) | 0 — MVP ✅ |
-| F2 | Sélection libre/ou aléatoire | Choix au spawn, mode libre ou tirage au sort | 0 — MVP ✅ |
-| F3 | Permideath | La mort est définitive, chaque décision a un impact | 1 ✅ |
-| F4 | Objectifs secrets | Coopération, sabotage, assassinat — attributs par joueur | 2 |
-| F5 | Map île sur-mesure | Île dédiée, +15 routes d'évasion uniques | 3 |
-| F6 | Événements dynamiques | Météo évolutive, hordes de zombies, événements dramatiques | 3 |
-| F7 | UI & mode spectateur | Interface & mode observateur optimisés Twitch/YT | 4 |
+| #   | Fonctionnalité               | Description                                                | Phase      |
+| --- | ---------------------------- | ---------------------------------------------------------- | ---------- |
+| F1  | 15 persos & 3 équipes        | 15 personnages uniques, 3 équipes (Alpha / Beta / Gamma)   | 0 — MVP ✅ |
+| F2  | Sélection libre/ou aléatoire | Choix au spawn, mode libre ou tirage au sort               | 0 — MVP ✅ |
+| F3  | Permideath                   | La mort est définitive, chaque décision a un impact        | 1 ✅       |
+| F4  | Objectifs secrets            | Coopération, sabotage, assassinat — attributs par joueur   | 2          |
+| F5  | Map île sur-mesure           | Île dédiée, +15 routes d'évasion uniques                   | 3          |
+| F6  | Événements dynamiques        | Météo évolutive, hordes de zombies, événements dramatiques | 3          |
+| F7  | UI & mode spectateur         | Interface & mode observateur optimisés Twitch/YT           | 4          |
 
 ---
 
@@ -32,9 +32,10 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 
 ### Phase 0 — MVP Core (Terminée ✅)
 
-**Objectif :** Valider la chaîne de base *connexion → sélection → assignation → UI*.
+**Objectif :** Valider la chaîne de base _connexion → sélection → assignation → UI_.
 
 **Fonctionnalités livrées :**
+
 - 15 personnages répartis en 3 équipes (Alpha, Beta, Gamma — 5 persos chacunes).
 - Sélection de personnage en mode libre ou aléatoire (`ZombRand` / `math.random` fallback).
 - Gestion des personnages déjà pris (`takenCharacters`) + **re-pick aléatoire** si nom pris.
@@ -44,6 +45,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 - Points d'entrée client/serveur (`media/lua/client/client.lua`, `media/lua/server/server.lua`).
 
 **Fichiers livrés :**
+
 - `media/lua/shared/player_selection.lua`, `media/lua/shared/teams.lua`,
   `media/lua/shared/player_assignment.lua`, `media/lua/shared/utils.lua`,
   `media/lua/shared/spawn_points.lua`.
@@ -54,6 +56,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
   `media/lua/client/notifications.lua`.
 
 **Tests :**
+
 - `test/test_selection.lua`, `test/test_connect.lua`, `test/test_multiplayer.lua`,
   `test/test_server.lua` (15 joueurs), `test/test_ui.lua`.
 
@@ -66,6 +69,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 **Objectif :** Introduire la **mort définitive** et un **système de victoire/défaite** par équipe, avec **reanimation en Z** et **deux fins**.
 
 **Mécanique (validée avec le product owner) :**
+
 - **Mort** → le **cadavre reste sur place** ; le joueur est **téléporté dans la `zombieZone`** et devient un **Z**.
 - **Reanimation en Z** : le Z garde ses **capacités Z** (`spawn_points.zombieAbilities` : vitesse +15 %, claw, vision nocturne) **et une capacité spéciale** : envoyer un **signal indirect** aux humains (canal de trahison).
 - **Perception** : un humain voit un Z comme un zombie (pas de chat vocal) ; le Z peut **prétendre sympa pour trahir** ou **défier pour aider**.
@@ -74,6 +78,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 - **Fin zombie (🧟)** : tous les humains éliminés → `Permadeath.checkEndgame() == "zombie_win"`.
 
 **Fichiers livrés :**
+
 - `media/lua/server/permadeath.lua` (nouveau) — `registerPlayer`, `onDeath`, `becomeZombie`, `killZombie`, `getSide`, `sendSignal` (+cooldown), `livingInTeam`, `zombieCount`, `aliveCount`, `checkEndgame`, `tryEscape`.
 - `media/lua/shared/spawn_points.lua` (étendu) — `zombieZone` + `zombieAbilities` + getters.
 - `media/lua/server/escape_routes.lua` (étendu) — `prerequisites` + `canUseRoute` / `unlockRoute` / `get`.
@@ -84,6 +89,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 > La logique de victoire est intégrée dans `permadeath.checkEndgame()` (au lieu d'un `victory_conditions.lua` séparé) pour limiter la surface serveur.
 
 **Tests :**
+
 - `test/test_permadeath.lua` — mort→Z (cadavre sur place), Z tué→dead, signal+cooldown, fin Z.
 - `test/test_endgame.lua` — routes bloquées/verrouillées/prêtes, évasion H ✅, évasion sans prérequis bloquée, fin Z `zombie_win`.
 
@@ -98,6 +104,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 **Objectif :** Donner un **but individuel** à chaque joueur via des **objectifs secrets** (coopération, sabotage, meurtre), source de trahison possible.
 
 **Fonctionnalités :**
+
 - `F4` Objectifs secrets par joueur — chaque personnage reçoit un rôle/objectif secret à la connexion.
   - Types d'objectifs : **Coopérateur** (aider son équipe), **Saboteur** (faire échouer l'équipe), **Assassin** (éliminer un joueur cible), **Survivant neutre** (survivre seul).
 - Attribution aléatoire ou basée sur le personnage.
@@ -106,12 +113,14 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 - Interaction avec la Phase 1 : un objectif peut nécessiter la mort d'un joueur (perma activé).
 
 **Fichiers concernés :**
+
 - `media/lua/server/quest_manager.lua` — gestion du cycle de vie des quêtes (Phase 2 ; `worldFlags` déjà présent pour la Phase 3).
 - `media/lua/server/escape_routes.lua` — définition des routes d'évasion (liées aux quêtes d'évasion).
 - `media/lua/server/player_connect.lua` — déclenche l'attribution d'un objectif secret après la sélection.
 - `media/lua/client/objectives_ui.lua` — affichage de l'objectif secret du joueur.
 
 **Tests :**
+
 - `test/test_quest_manager.lua` — attribution et suivi d'objectifs.
 - `test/test_escape_routes.lua` — validation des routes d'évasion.
 
@@ -126,6 +135,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 **Objectif :** Rendre l'île **vivante et hostiles** avec des événements qui changent le cours du jeu.
 
 **Fonctionnalités :**
+
 - `F6` Événements dynamiques & environnement évolutif :
   - `media/lua/server/weather.lua` — météo changeante (orage, brouillard, canicule) impactant la visibilité et la survie.
   - `media/lua/server/zombie_horde.lua` — apparitions périodiques de hordes de zombies vers les zones clés.
@@ -137,12 +147,14 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 - Intégration des routes d'évasion dans `media/lua/server/escape_routes.lua` (Phase 2) et l'UI.
 
 **Fichiers concernés :**
+
 - `media/lua/server/weather.lua`, `media/lua/server/zombie_horde.lua`, `media/lua/server/drama_events.lua`.
 - `media/lua/server/interactive_objects.lua`.
 - `media/lua/server/escape_routes.lua` (étendu en Phase 3).
 - `media/lua/server/server.lua` / `media/lua/client/client.lua` — orchestration des événements (timers, événements PZ).
 
 **Tests :**
+
 - `test/test_weather.lua` — cycle météo.
 - `test/test_zombie_horde.lua` — apparition des hordes.
 - `test/test_drama_events.lua` — déclenchement des événements.
@@ -158,6 +170,7 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 **Objectif :** Finaliser l'expérience pour les **joueurs** et les **spectateurs** (Twitch / YouTube).
 
 **Fonctionnalités :**
+
 - `F7` Interface & mode spectateur optimisé :
   - `media/lua/client/notifications.lua` — notifications centrées pendant la partie (mort, trahison, événement, fin de partie).
   - `media/lua/client/objectives_ui.lua` — HUD de l'objectif secret + objectifs d'équipe visibles.
@@ -167,11 +180,13 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 - Indicateurs visuels pour le streaming (taux de trahison, équipe dominante, timer des événements).
 
 **Fichiers concernés :**
+
 - `media/lua/client/notifications.lua`, `media/lua/client/objectives_ui.lua`, `media/lua/client/selection_ui.lua`.
 - `media/lua/client/ui_selection.lua` (itération / enrichissement).
 - `media/lua/client/client.lua` / `media/lua/server/server.lua` — enregistrement des événements UI.
 
 **Tests :**
+
 - `test/test_ui.lua` (corrigé) — vérifie l'affichage de l'UI.
 - `test/test_notifications.lua` — envoi de notifications.
 
@@ -185,13 +200,13 @@ Transformer _Project Zomboid_ en une expérience multijoueur de **déduction soc
 
 Chaque phase doit être validée par des tests avant de passer à la suivante :
 
-| Phase | Tests associés | Commande exécution | OK |
-|---|---|---|---|
-| 0 — MVP | `test/test_selection`, `test_connect`, `test_multiplayer`, `test_server`, `test_ui` | `lua test/test_*.lua` | ✅ |
-| 1 — Permideath | `test/test_permadeath.lua`, `test/test_endgame.lua` | `lua test/test_*.lua` | ✅ |
-| 2 — Quêtes | `test/test_quest_manager.lua`, `test/test_escape_routes.lua` | — | — |
-| 3 — Événements | `test/test_weather.lua`, `test/test_zombie_horde.lua`, `test/test_drama_events.lua` | — | — |
-| 4 — UI | `test/test_ui.lua` (corrigé), `test/test_notifications.lua` | — | — |
+| Phase          | Tests associés                                                                      | Commande exécution    | OK  |
+| -------------- | ----------------------------------------------------------------------------------- | --------------------- | --- |
+| 0 — MVP        | `test/test_selection`, `test_connect`, `test_multiplayer`, `test_server`, `test_ui` | `lua test/test_*.lua` | ✅  |
+| 1 — Permideath | `test/test_permadeath.lua`, `test/test_endgame.lua`                                 | `lua test/test_*.lua` | ✅  |
+| 2 — Quêtes     | `test/test_quest_manager.lua`, `test/test_escape_routes.lua`                        | —                     | —   |
+| 3 — Événements | `test/test_weather.lua`, `test/test_zombie_horde.lua`, `test/test_drama_events.lua` | —                     | —   |
+| 4 — UI         | `test/test_ui.lua` (corrigé), `test/test_notifications.lua`                         | —                     | —   |
 
 > ⚠️ Les APIs Project Zomboid (ex: `getCore()`, `ISPanel`, `getTextManager()`, `getPlayerData()`, `Events`) ne sont pas disponibles hors-jeu. Les modules serveur sont écrits **sans dépendance forçée aux APIs PZ** (les hooks `if Events then ... end` sont sautés hors-jeu), de sorte que les tests unitaires restent exécutables avec un interpréteur Lua standard (`lua test/test_*.lua`). `test_ui.lua` saute via `rawget(_G,"getCore")`.
 
@@ -213,13 +228,13 @@ Chaque phase doit être validée par des tests avant de passer à la suivante :
 
 ## 🐛 Suivi des Bugs Connus
 
-| ID | Bug | Statut | Phase |
-|---|---|---|---|
-| BUG-01 | `test/test_ui.lua` appelait `UI.showSelectionUI` (n'existe pas → `show`) | ✅ **Corrigé** (appel `UI.show` + garde APIs PZ) | UI |
-| BUG-02 | `player_multijoueur.lua` : bloc mort `if not confirmed then` après `confirmed = true` | ✅ **Corrigé** (logique unie via `player_assignment`) | MVP |
-| BUG-03 | Duplication logique entre `player_connect` & `player_multijoueur` | ✅ **Corrigé** (module partagé `player_assignment.lua`) | MVP |
-| BUG-04 | Modules globaux (non `local`) : risque de collisions de noms | ℹ️ Accepté (convention PZ) — modules sont désormais `local` + `return` | — |
-| BUG-05 | Structure du mod (`core/` racine) ne correspondait pas au `README.md` | ✅ **Résolu** (restructurée en `media/lua/{shared,server,client}`) | Packaging |
+| ID     | Bug                                                                                   | Statut                                                                 | Phase     |
+| ------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | --------- |
+| BUG-01 | `test/test_ui.lua` appelait `UI.showSelectionUI` (n'existe pas → `show`)              | ✅ **Corrigé** (appel `UI.show` + garde APIs PZ)                       | UI        |
+| BUG-02 | `player_multijoueur.lua` : bloc mort `if not confirmed then` après `confirmed = true` | ✅ **Corrigé** (logique unie via `player_assignment`)                  | MVP       |
+| BUG-03 | Duplication logique entre `player_connect` & `player_multijoueur`                     | ✅ **Corrigé** (module partagé `player_assignment.lua`)                | MVP       |
+| BUG-04 | Modules globaux (non `local`) : risque de collisions de noms                          | ℹ️ Accepté (convention PZ) — modules sont désormais `local` + `return` | —         |
+| BUG-05 | Structure du mod (`core/` racine) ne correspondait pas au `README.md`                 | ✅ **Résolu** (restructurée en `media/lua/{shared,server,client}`)     | Packaging |
 
 ---
 
